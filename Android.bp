@@ -6,12 +6,21 @@ cc_library_shared {
         "src/random_device.cpp",
     ],
     header_libs: [
+        "libboost_config",
+        "libboost_core",
+        "libboost_throw_exception",
+        "libboost_assert",
+    ],
+    shared_libs: [
+        "libboost_system",
     ],
     target: {
         android: {
             cflags: [
                 "-fPIC",
                 "-DPIC",
+                "-Wno-error=non-virtual-dtor",
+                "-fexceptions",
             ],
         },
         not_windows: {
